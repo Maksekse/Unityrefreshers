@@ -18,11 +18,20 @@ public class PrefabSpawner : MonoBehaviour
     [SerializeField]
     private Button SpawnButton;
 
+    private void Awake()
+    {
+    }
     private void Start()
     {
-        if(spawnOnStart)
+        if (spawnOnStart)
         {
-            Instantiate(prefab, spawnLocation, Quaternion.identity);
+            SpawnObject();
         }
+        SpawnButton.onClick.AddListener(SpawnObject);
+    }
+
+    private void SpawnObject()
+    {
+        Instantiate(prefab, spawnLocation, Quaternion.identity);
     }
 }
